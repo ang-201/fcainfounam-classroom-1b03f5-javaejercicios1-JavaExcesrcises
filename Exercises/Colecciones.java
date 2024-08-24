@@ -39,9 +39,30 @@ public class Colecciones {
     }
 
     public HashMap<Integer, String>  obtenerHash(){
-        int length = cars.size() + bikes.length + bicicles.size();// obtener tamaño
-        int count =1;
-        //this.transport.forEach((key, value) -> System.out.println(key + " " + value)); //imprimir para pruebas
+        //int length = cars.size() + bikes.length + bicicles.size();// obtener tamaño
+        int count = 1;
+
+        for (String car : cars) {
+            if (car != null && !car.isEmpty()) {
+                transport.put(count++, car);
+            }
+        }
+
+        for (String bike : bikes) {
+            if (bike != null && !bike.isEmpty()) {
+                transport.put(count++, bike);
+            }
+        }
+
+        for (String bicicle : bicicles) {
+            if (bicicle != null && !bicicle.isEmpty()) {
+                transport.put(count++, bicicle);
+            }
+        }
+
+        transport.forEach((key, value) -> System.out.println(key + " " + value));
+        
         return this.transport;
-    }
+}
+
 }
