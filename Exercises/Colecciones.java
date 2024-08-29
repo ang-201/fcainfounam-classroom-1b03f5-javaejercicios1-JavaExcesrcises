@@ -1,68 +1,39 @@
-package Exercises;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.HashMap;
+public HashMap<Integer, String> obtenerHash() {
+    // Crear un Set para almacenar los elementos sin duplicados
+    Set<String> elementosUnicos = new HashSet<>();
 
-
-public class Colecciones {
-    ArrayList<String> cars ;
-    String[] bikes;
-    Set<String> bicicles;
-    HashMap<Integer, String> transport;
-
-    public Colecciones(){
-        this.cars = new ArrayList<String>();
-        this.bikes = new String[10];
-        this.bicicles = new HashSet<String>();
-        this.transport= new HashMap<Integer, String>();
+    // Agregar elementos de la lista cars, eliminando duplicados y elementos vacíos o nulos
+    for (String car : cars) {
+        if (car != null && !car.isEmpty()) {
+            elementosUnicos.add(car);
+        }
     }
 
-    public void inicializar(){
-        //carros
-        cars.add("VW Vento");
-        cars.add("Nisan Versa");
-        cars.add("Ford Fiesta");
-        cars.add("Mazda 2");
-        //motos
-        this.bikes[1]="Yamaha V-Star 250";
-        this.bikes[2]="Royal Enfield Meteor 350";
-        this.bikes[3]="Kawasaki Eliminator";
-        this.bikes[4]="Honda CMX500A2 SE Rebel.";
-        //bicicletas 
-        this.bicicles.add("TREK MADONE 7 DIAMOND");
-        this.bicicles.add("TREK MADONE 7 DIAMOND");
-        this.bicicles.add("TREK MADONE 7 DIAMOND");
-        this.bicicles.add("AURUMANIA CRYSTAL EDITION GOLD BIKE");
-        this.bicicles.add("AURUMANIA CRYSTAL EDITION GOLD BIKE");
-        this.bicicles.add("AURUMANIA CRYSTAL EDITION GOLD BIKE");
+    // Agregar elementos del arreglo bikes, eliminando duplicados y elementos vacíos o nulos
+    for (String bike : bikes) {
+        if (bike != null && !bike.isEmpty()) {
+            elementosUnicos.add(bike);
+        }
     }
 
-    public HashMap<Integer, String>  obtenerHash(){
-        //int length = cars.size() + bikes.length + bicicles.size();// obtener tamaño
-        int count = 1;
-
-        for (String car : cars) {
-            if (car != null && !car.isEmpty()) {
-                transport.put(count++, car);
-            }
+    // Agregar elementos del set bicicles, eliminando duplicados y elementos vacíos o nulos
+    for (String bicicle : bicicles) {
+        if (bicicle != null && !bicicle.isEmpty()) {
+            elementosUnicos.add(bicicle);
         }
+    }
 
-        for (String bike : bikes) {
-            if (bike != null && !bike.isEmpty()) {
-                transport.put(count++, bike);
-            }
-        }
+    // Crear un nuevo HashMap para almacenar los elementos sin duplicados con índices incrementales
+    HashMap<Integer, String> resultado = new HashMap<>();
+    int count = 1;
+    
+    // Agregar cada elemento del Set al HashMap con una clave incremental
+    for (String elemento : elementosUnicos) {
+        resultado.put(count++, elemento);
+    }
 
-        for (String bicicle : bicicles) {
-            if (bicicle != null && !bicicle.isEmpty()) {
-                transport.put(count++, bicicle);
-            }
-        }
+    // Imprimir el HashMap
+    resultado.forEach((key, value) -> System.out.println(key + " " + value));
 
-        transport.forEach((key, value) -> System.out.println(key + " " + value));
-        
-        return this.transport;
-}
-
+    return resultado;
 }

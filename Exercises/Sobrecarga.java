@@ -6,29 +6,36 @@ public class Sobrecarga {
     String materia;
     int calificacion;
 
+    // Constructor principal de la clase Sobrecarga
     public Sobrecarga(String nombre, String materia, int calificacion) {
         this.nombre = nombre;
         this.materia = materia;
         this.calificacion = calificacion;
     }
-    public String reprobar(){
-        if (this.calificacion>5)
+
+    // Método reprobar original de la clase Sobrecarga
+    public String reprobar() {
+        if (this.calificacion > 5) {
             return "true";
-        else
+        } else {
             return "false";
-            
+        }
     }
 
     /**
      * Profesor
      */
-    class Profesor extends Sobrecarga{
-        public Profesor(String nombre, String materia, int calificacion){
+    class Profesor extends Sobrecarga {
+        // Constructor de la clase Profesor
+        public Profesor(String nombre, String materia, int calificacion) {
             super(nombre, materia, calificacion);
         }
-        public String reprobar(){
-            if(this.calificacion>5)
-                return ">:) Sacaste "+this.calificacion+" en " + this.materia;
+
+        // Método reprobar personalizado para el Profesor
+        @Override
+        public String reprobar() {
+            if (this.calificacion > 5)
+                return ">:) Sacaste " + this.calificacion + " en " + this.materia;
             else
                 return ":(";
         }
@@ -37,15 +44,20 @@ public class Sobrecarga {
     /**
      * Alumno
      */
-    class Alumno extends Sobrecarga{
-        public Alumno(String nombre, String materia, int calificacion){
+    class Alumno extends Sobrecarga {
+        // Constructor de la clase Alumno
+        public Alumno(String nombre, String materia, int calificacion) {
             super(nombre, materia, calificacion);
         }
-        public String reprobar(){
 
+        // Método reprobar personalizado para el Alumno
+        @Override
+        public String reprobar() {
+            if (this.calificacion < 6) {
+                return ":(";
+            } else {
+                return ":)";
+            }
         }
-        
     }
-
 }
-
